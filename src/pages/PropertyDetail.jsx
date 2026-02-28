@@ -76,16 +76,26 @@ function PropertyDetail() {
   const shareUrl = window.location.href;
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-900 transition-colors duration-300">
       {/* Navigation */}
-      <div className="bg-white shadow">
+      <div className="bg-white dark:bg-secondary-900 shadow transition-colors duration-300">
         <div className="container py-4">
           <div className="flex items-center space-x-2 text-sm">
-            <Link to="/" className="text-secondary-600 hover:text-primary-600">Home</Link>
-            <span className="text-secondary-400">/</span>
-            <Link to="/properties" className="text-secondary-600 hover:text-primary-600">Properties</Link>
-            <span className="text-secondary-400">/</span>
-            <span className="text-primary-600">{property.title}</span>
+            <Link
+              to="/"
+              className="text-secondary-600 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400"
+            >
+              Home
+            </Link>
+            <span className="text-secondary-400 dark:text-secondary-500">/</span>
+            <Link
+              to="/properties"
+              className="text-secondary-600 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400"
+            >
+              Properties
+            </Link>
+            <span className="text-secondary-400 dark:text-secondary-500">/</span>
+            <span className="text-primary-600 dark:text-primary-400">{property.title}</span>
           </div>
         </div>
       </div>
@@ -126,90 +136,146 @@ function PropertyDetail() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-white rounded-lg shadow-md p-6"
+              className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 p-6 transition-colors duration-300"
             >
-              <h2 className="text-2xl font-bold mb-4">Property Details</h2>
-              <p className="text-secondary-600 mb-6">{property.description}</p>
+              <h2 className="text-2xl font-bold mb-4 text-secondary-900 dark:text-white">
+                Property Details
+              </h2>
+              <p className="text-secondary-600 dark:text-secondary-400 mb-6">
+                {property.description}
+              </p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="flex items-center space-x-2">
                   {/* <FiBed className="text-primary-600" /> */}
-                  <span>{property.parkingSpaces} Parking</span>
+                  <span className="text-secondary-800 dark:text-secondary-200">
+                    {property.parkingSpaces} Parking
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <FiMaximize2 className="text-primary-600" />
-                  <span>{property.lotSize}</span>
+                  <FiMaximize2 className="text-primary-600 dark:text-primary-400" />
+                  <span className="text-secondary-800 dark:text-secondary-200">
+                    {property.lotSize}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <FiCalendar className="text-primary-600" />
-                  <span>Built {property.yearBuilt}</span>
+                  <FiCalendar className="text-primary-600 dark:text-primary-400" />
+                  <span className="text-secondary-800 dark:text-secondary-200">
+                    Built {property.yearBuilt}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <FiUsers className="text-primary-600" />
-                  <span>{property.metrics.totalInvestors} Investors</span>
+                  <FiUsers className="text-primary-600 dark:text-primary-400" />
+                  <span className="text-secondary-800 dark:text-secondary-200">
+                    {property.metrics.totalInvestors} Investors
+                  </span>
                 </div>
               </div>
 
-              <h3 className="text-xl font-semibold mb-4">Features</h3>
+              <h3 className="text-xl font-semibold mb-4 text-secondary-900 dark:text-white">
+                Features
+              </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                 {property.features.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-2">
-                    <FiHome className="text-primary-600" />
-                    <span>{feature}</span>
+                    <FiHome className="text-primary-600 dark:text-primary-400" />
+                    <span className="text-secondary-800 dark:text-secondary-200">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
 
               {/* Token Details */}
-              <h3 className="text-xl font-semibold mb-4">Token Information</h3>
-              <div className="bg-secondary-50 rounded-lg p-6 mb-6">
+              <h3 className="text-xl font-semibold mb-4 text-secondary-900 dark:text-white">
+                Token Information
+              </h3>
+              <div className="bg-secondary-50 dark:bg-secondary-900/40 rounded-lg p-6 mb-6 transition-colors duration-300">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-secondary-600">Token Symbol</p>
-                    <p className="font-semibold">{property.tokenDetails.tokenSymbol}</p>
+                    <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                      Token Symbol
+                    </p>
+                    <p className="font-semibold text-secondary-900 dark:text-white">
+                      {property.tokenDetails.tokenSymbol}
+                    </p>
                   </div>
                   <div>
-                    <p className="text-sm text-secondary-600">Token Price</p>
-                    <p className="font-semibold">{property.tokenDetails.tokenPrice}</p>
+                    <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                      Token Price
+                    </p>
+                    <p className="font-semibold text-secondary-900 dark:text-white">
+                      {property.tokenDetails.tokenPrice}
+                    </p>
                   </div>
                   <div>
-                    <p className="text-sm text-secondary-600">Available Tokens</p>
-                    <p className="font-semibold">{property.tokenDetails.availableTokens.toLocaleString()}</p>
+                    <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                      Available Tokens
+                    </p>
+                    <p className="font-semibold text-secondary-900 dark:text-white">
+                      {property.tokenDetails.availableTokens.toLocaleString()}
+                    </p>
                   </div>
                   <div>
-                    <p className="text-sm text-secondary-600">Total Supply</p>
-                    <p className="font-semibold">{property.tokenDetails.totalTokens.toLocaleString()}</p>
+                    <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                      Total Supply
+                    </p>
+                    <p className="font-semibold text-secondary-900 dark:text-white">
+                      {property.tokenDetails.totalTokens.toLocaleString()}
+                    </p>
                   </div>
                   <div className="col-span-2">
-                    <p className="text-sm text-secondary-600">Smart Contract</p>
-                    <p className="font-mono text-sm">{property.tokenDetails.contractAddress}</p>
+                    <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                      Smart Contract
+                    </p>
+                    <p className="font-mono text-sm text-secondary-900 dark:text-secondary-100">
+                      {property.tokenDetails.contractAddress}
+                    </p>
                   </div>
                 </div>
               </div>
 
               {/* Financial Details */}
-              <h3 className="text-xl font-semibold mb-4">Financial Overview</h3>
+              <h3 className="text-xl font-semibold mb-4 text-secondary-900 dark:text-white">
+                Financial Overview
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-secondary-50 rounded-lg p-6">
-                  <h4 className="font-semibold mb-4">Rental Income</h4>
+                <div className="bg-secondary-50 dark:bg-secondary-900/40 rounded-lg p-6 transition-colors duration-300">
+                  <h4 className="font-semibold mb-4 text-secondary-900 dark:text-white">
+                    Rental Income
+                  </h4>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-secondary-600">Gross Rent</span>
-                      <span className="font-medium">{property.financials.grossRent}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Gross Rent
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
+                        {property.financials.grossRent}
+                      </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-secondary-600">Net Rent</span>
-                      <span className="font-medium">{property.financials.netRent}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Net Rent
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
+                        {property.financials.netRent}
+                      </span>
                     </div>
                   </div>
                 </div>
-                <div className="bg-secondary-50 rounded-lg p-6">
-                  <h4 className="font-semibold mb-4">Expenses</h4>
+                <div className="bg-secondary-50 dark:bg-secondary-900/40 rounded-lg p-6 transition-colors duration-300">
+                  <h4 className="font-semibold mb-4 text-secondary-900 dark:text-white">
+                    Expenses
+                  </h4>
                   <div className="space-y-2">
                     {Object.entries(property.financials.expenses).map(([key, value]) => (
                       <div key={key} className="flex justify-between">
-                        <span className="text-secondary-600">{key.replace('_', ' ').charAt(0).toUpperCase() + key.slice(1)}</span>
-                        <span className="font-medium">{value}</span>
+                        <span className="text-secondary-600 dark:text-secondary-400">
+                          {key.replace('_', ' ').charAt(0).toUpperCase() + key.slice(1)}
+                        </span>
+                        <span className="font-medium text-secondary-900 dark:text-white">
+                          {value}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -226,22 +292,28 @@ function PropertyDetail() {
             className="space-y-6"
           >
             {/* Investment Card */}
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 p-6 transition-colors duration-300">
               <div className="flex justify-between items-center mb-4">
                 <div>
-                  <p className="text-sm text-secondary-500">Investment Price</p>
+                  <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                    Investment Price
+                  </p>
                   <div className="flex items-center">
-                    <FiDollarSign className="text-primary-600" />
-                    <span className="text-2xl font-bold">${property.price.usd.toLocaleString()}</span>
+                    <FiDollarSign className="text-primary-600 dark:text-primary-400" />
+                    <span className="text-2xl font-bold text-secondary-900 dark:text-white">
+                      ${property.price.usd.toLocaleString()}
+                    </span>
                   </div>
-                  <div className="flex items-center text-primary-600">
+                  <div className="flex items-center text-primary-600 dark:text-primary-400">
                     <FaEthereum className="mr-1" />
                     <span>{property.price.eth} ETH</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-secondary-500">Annual ROI</p>
-                  <div className="flex items-center justify-end text-green-600">
+                  <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                    Annual ROI
+                  </p>
+                  <div className="flex items-center justify-end text-green-600 dark:text-green-400">
                     <FiTrendingUp className="mr-1" />
                     <span className="text-2xl font-bold">{property.roi}</span>
                   </div>
@@ -251,32 +323,48 @@ function PropertyDetail() {
               {/* Investment Metrics */}
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-secondary-600">Rental Yield</span>
-                  <span className="font-medium">{property.metrics.rentalYield}</span>
+                  <span className="text-secondary-600 dark:text-secondary-400">
+                    Rental Yield
+                  </span>
+                  <span className="font-medium text-secondary-900 dark:text-white">
+                    {property.metrics.rentalYield}
+                  </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-secondary-600">Appreciation</span>
-                  <span className="font-medium">{property.metrics.appreciation}</span>
+                  <span className="text-secondary-600 dark:text-secondary-400">
+                    Appreciation
+                  </span>
+                  <span className="font-medium text-secondary-900 dark:text-white">
+                    {property.metrics.appreciation}
+                  </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-secondary-600">Total Return</span>
-                  <span className="font-medium text-green-600">{property.metrics.totalReturn}</span>
+                  <span className="text-secondary-600 dark:text-secondary-400">
+                    Total Return
+                  </span>
+                  <span className="font-medium text-green-600 dark:text-green-400">
+                    {property.metrics.totalReturn}
+                  </span>
                 </div>
               </div>
 
               {/* Funding Progress */}
               <div className="mb-6">
                 <div className="flex justify-between text-sm mb-1">
-                  <span className="text-secondary-600">Funding Progress</span>
-                  <span className="font-medium">{property.metrics.funded}</span>
+                  <span className="text-secondary-600 dark:text-secondary-400">
+                    Funding Progress
+                  </span>
+                  <span className="font-medium text-secondary-900 dark:text-white">
+                    {property.metrics.funded}
+                  </span>
                 </div>
-                <div className="w-full bg-secondary-100 rounded-full h-2">
+                <div className="w-full bg-secondary-100 dark:bg-secondary-800 rounded-full h-2">
                   <div
                     className="bg-primary-600 h-2 rounded-full"
                     style={{ width: property.metrics.funded }}
                   />
                 </div>
-                <p className="text-sm text-secondary-500 mt-1">
+                <p className="text-sm text-secondary-500 dark:text-secondary-400 mt-1">
                   Min Investment: {property.metrics.minInvestment}
                 </p>
               </div>
@@ -293,7 +381,7 @@ function PropertyDetail() {
                 Connect Wallet to Invest
               </button>
               
-              <div className="flex items-center justify-center space-x-4 pt-4 border-t">
+              <div className="flex items-center justify-center space-x-4 pt-4 border-t border-secondary-100 dark:border-secondary-700">
                 <FacebookShareButton url={shareUrl}>
                   <FaFacebook className="text-2xl text-blue-600 hover:opacity-80" />
                 </FacebookShareButton>

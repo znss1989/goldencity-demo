@@ -49,7 +49,7 @@ function BlogPost() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-900 transition-colors duration-300">
       {/* Hero Section */}
       <div className="relative h-[400px]">
         <img
@@ -99,9 +99,9 @@ function BlogPost() {
             transition={{ delay: 0.2 }}
             className="lg:col-span-2"
           >
-            <div className="bg-white rounded-lg shadow-md p-8">
+            <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 p-8 transition-colors duration-300">
               <div 
-                className="prose prose-lg max-w-none"
+                className="prose prose-lg max-w-none dark:prose-invert"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </div>
@@ -115,8 +115,8 @@ function BlogPost() {
           >
             <div className="space-y-6">
               {/* Share */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold mb-4 flex items-center">
+              <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 p-6 transition-colors duration-300">
+                <h3 className="text-lg font-semibold mb-4 flex items-center text-secondary-900 dark:text-white">
                   <FiShare2 className="mr-2" />
                   Share this article
                 </h3>
@@ -134,8 +134,8 @@ function BlogPost() {
               </div>
 
               {/* Tags */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold mb-4 flex items-center">
+              <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 p-6 transition-colors duration-300">
+                <h3 className="text-lg font-semibold mb-4 flex items-center text-secondary-900 dark:text-white">
                   <FiTag className="mr-2" />
                   Tags
                 </h3>
@@ -143,7 +143,7 @@ function BlogPost() {
                   {post.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-secondary-100 text-secondary-600 rounded-full text-sm"
+                      className="px-3 py-1 bg-secondary-100 dark:bg-secondary-900/60 text-secondary-600 dark:text-secondary-300 rounded-full text-sm"
                     >
                       {tag}
                     </span>

@@ -93,7 +93,7 @@ function Blog() {
   });
 
   return (
-    <div className="min-h-screen bg-secondary-50 py-16">
+    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-900 py-16 transition-colors duration-300">
       <div className="container">
         {/* Header */}
         <motion.div
@@ -101,19 +101,21 @@ function Blog() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h1 className="text-4xl font-bold mb-4">Real Estate & Crypto Insights</h1>
-          <p className="text-secondary-600">
+          <h1 className="text-4xl font-bold mb-4 text-secondary-900 dark:text-white">
+            Real Estate & Crypto Insights
+          </h1>
+          <p className="text-secondary-600 dark:text-secondary-400">
             Stay updated with the latest trends in real estate investment, cryptocurrency, and blockchain technology.
           </p>
         </motion.div>
 
         {/* Search and Filter */}
         <div className="max-w-4xl mx-auto mb-12">
-          <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 p-6 transition-colors duration-300">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
                 <div className="relative">
-                  <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary-400" />
+                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary-400 dark:text-secondary-500" />
                   <input
                     type="text"
                     placeholder="Search articles..."
@@ -149,7 +151,7 @@ function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
+            className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 overflow-hidden transition-colors duration-300"
             >
               <Link to={`/blog/${post.slug}`}>
                 <div className="relative h-48">
@@ -163,13 +165,13 @@ function Blog() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h2 className="text-xl font-semibold mb-3 hover:text-primary-600 transition-colors">
+                  <h2 className="text-xl font-semibold mb-3 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-secondary-900 dark:text-white">
                     {post.title}
                   </h2>
-                  <p className="text-secondary-600 mb-4">
+                  <p className="text-secondary-600 dark:text-secondary-400 mb-4">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center text-sm text-secondary-500">
+                  <div className="flex items-center text-sm text-secondary-500 dark:text-secondary-400">
                     <FiUser className="mr-2" />
                     <span className="mr-4">{post.author}</span>
                     <FiClock className="mr-2" />

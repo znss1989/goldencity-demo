@@ -150,15 +150,21 @@ function Properties() {
   });
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-900 transition-colors duration-300">
       {/* Header */}
-      <div className="bg-white shadow">
+      <div className="bg-white dark:bg-secondary-900 shadow transition-colors duration-300">
         <div className="container py-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold">Investment Properties</h1>
+            <h1 className="text-3xl font-bold text-secondary-900 dark:text-white">
+              Investment Properties
+            </h1>
             <div className="flex items-center space-x-4">
               <button
-                className={`p-2 rounded-md ${showFilters ? 'bg-primary-100 text-primary-600' : 'hover:bg-secondary-100'}`}
+                className={`p-2 rounded-md ${
+                  showFilters
+                    ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400'
+                    : 'hover:bg-secondary-100 dark:hover:bg-secondary-800 dark:text-secondary-300'
+                }`}
                 onClick={() => setShowFilters(!showFilters)}
               >
                 <FiFilter size={20} />
@@ -170,11 +176,11 @@ function Properties() {
 
       {/* Filters */}
       {showFilters && (
-        <div className="bg-white shadow-md border-t">
+        <div className="bg-white dark:bg-secondary-900 shadow-md border-t border-secondary-100 dark:border-secondary-700 transition-colors duration-300">
           <div className="container py-6">
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
               <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-1">
+                <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-1">
                   Price Range
                 </label>
                 <select
@@ -190,7 +196,7 @@ function Properties() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-1">
+                <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-1">
                   Property Type
                 </label>
                 <select
@@ -206,7 +212,7 @@ function Properties() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-1">
+                <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-1">
                   Location
                 </label>
                 <input
@@ -219,7 +225,7 @@ function Properties() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-1">
+                <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-1">
                   Minimum ROI
                 </label>
                 <input
@@ -232,7 +238,7 @@ function Properties() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-1">
+                <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-1">
                   Funding Status
                 </label>
                 <select
@@ -248,7 +254,7 @@ function Properties() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-secondary-700 mb-1">
+                <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-1">
                   Sort By
                 </label>
                 <select
@@ -274,7 +280,7 @@ function Properties() {
           {sortedProperties.map((property, index) => (
             <motion.div
               key={property.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
+              className="bg-white dark:bg-secondary-800 rounded-lg shadow-md dark:shadow-secondary-900/50 overflow-hidden transition-colors duration-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -291,25 +297,35 @@ function Properties() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{property.title}</h3>
-                  <p className="text-secondary-600 mb-4">{property.location}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-secondary-900 dark:text-white">
+                    {property.title}
+                  </h3>
+                  <p className="text-secondary-600 dark:text-secondary-400 mb-4">
+                    {property.location}
+                  </p>
 
                   {/* Price and ROI */}
                   <div className="flex justify-between items-center mb-4">
                     <div>
-                      <p className="text-sm text-secondary-500">Investment Price</p>
+                      <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                        Investment Price
+                      </p>
                       <div className="flex items-center">
-                        <FiDollarSign className="text-primary-600" />
-                        <span className="font-semibold">${property.price.usd.toLocaleString()}</span>
+                        <FiDollarSign className="text-primary-600 dark:text-primary-400" />
+                        <span className="font-semibold text-secondary-900 dark:text-white">
+                          ${property.price.usd.toLocaleString()}
+                        </span>
                       </div>
-                      <div className="flex items-center text-sm text-primary-600">
+                      <div className="flex items-center text-sm text-primary-600 dark:text-primary-400">
                         <FaEthereum className="mr-1" />
                         <span>{property.price.eth} ETH</span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm text-secondary-500">Annual ROI</p>
-                      <div className="flex items-center justify-end text-green-600">
+                      <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                        Annual ROI
+                      </p>
+                      <div className="flex items-center justify-end text-green-600 dark:text-green-400">
                         <FiTrendingUp className="mr-1" />
                         <span className="font-semibold">{property.roi}</span>
                       </div>
@@ -319,26 +335,42 @@ function Properties() {
                   {/* Investment Metrics */}
                   <div className="space-y-2 mb-4">
                     <div className="flex justify-between text-sm">
-                      <span className="text-secondary-600">Monthly Income</span>
-                      <span className="font-medium">{property.metrics.monthlyIncome}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Monthly Income
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
+                        {property.metrics.monthlyIncome}
+                      </span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-secondary-600">Appreciation</span>
-                      <span className="font-medium">{property.metrics.appreciation}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Appreciation
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
+                        {property.metrics.appreciation}
+                      </span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-secondary-600">Min Investment</span>
-                      <span className="font-medium">{property.metrics.minInvestment}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Min Investment
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
+                        {property.metrics.minInvestment}
+                      </span>
                     </div>
                   </div>
 
                   {/* Funding Progress */}
                   <div className="mb-4">
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-secondary-600">Funding Progress</span>
-                      <span className="font-medium">{property.metrics.funded}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Funding Progress
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
+                        {property.metrics.funded}
+                      </span>
                     </div>
-                    <div className="w-full bg-secondary-100 rounded-full h-2">
+                    <div className="w-full bg-secondary-100 dark:bg-secondary-800 rounded-full h-2">
                       <div
                         className="bg-primary-600 h-2 rounded-full"
                         style={{ width: property.metrics.funded }}
@@ -347,16 +379,22 @@ function Properties() {
                   </div>
 
                   {/* Token Details */}
-                  <div className="bg-secondary-50 rounded-lg p-3 mb-4">
+                  <div className="bg-secondary-50 dark:bg-secondary-900/40 rounded-lg p-3 mb-4 transition-colors duration-300">
                     <div className="flex justify-between text-sm">
-                      <span className="text-secondary-600">Available Tokens</span>
-                      <span className="font-medium">
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Available Tokens
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
                         {property.tokenDetails.availableTokens.toLocaleString()} / {property.tokenDetails.totalTokens.toLocaleString()}
                       </span>
                     </div>
                     <div className="flex justify-between text-sm mt-1">
-                      <span className="text-secondary-600">Token Price</span>
-                      <span className="font-medium">{property.tokenDetails.tokenPrice}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">
+                        Token Price
+                      </span>
+                      <span className="font-medium text-secondary-900 dark:text-white">
+                        {property.tokenDetails.tokenPrice}
+                      </span>
                     </div>
                   </div>
 
