@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
+import { WalletProvider } from './context/WalletContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -14,9 +16,11 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
+    <ThemeProvider>
+      <WalletProvider>
+        <Router>
+          <div className="min-h-screen flex flex-col bg-secondary-50 dark:bg-secondary-900 transition-colors duration-300">
+            <Navbar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -32,8 +36,10 @@ function App() {
           </Routes>
         </main>
         <Footer />
-      </div>
-    </Router>
+          </div>
+        </Router>
+      </WalletProvider>
+    </ThemeProvider>
   );
 }
 
